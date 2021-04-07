@@ -17,7 +17,7 @@ module.exports = {
     hot: true,
   },
   resolve: {
-    extensions: ['.ts', '.tsx']
+    extensions: ['.js', '.jsx', '.ts', '.tsx']
   },
   plugins: [
     isDevelopment && new ReactRefreshWebpackPlugin(),
