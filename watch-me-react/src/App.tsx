@@ -1,3 +1,10 @@
+import { Header } from './components/Header'
+import './styles/global.scss';
+
 export function App() {
-  return <h1>Hello</h1>
+  return (
+    <div className="app">
+      <Header />
+    </div>
+  )
 }
