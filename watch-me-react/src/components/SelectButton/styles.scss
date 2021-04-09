@@ -1,0 +1,33 @@
+.select-button {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 12px 0;
+
+  &__select-item {
+    padding: 0 32px;
+    height: 56px;
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+    font-size: 18px;
+    color: #c0b7b7;
+    line-height: 22px;
+    background-color: #23263a;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+
+    transition: all 0.4s;
+
+    &.--selected {
+      background-color: #f2c046;
+      color: #23263a;
+    }
+
+    & + & {
+      margin-left: 28px;
+    }
+  }
+}
