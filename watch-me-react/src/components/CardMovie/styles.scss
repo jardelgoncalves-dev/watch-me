@@ -62,6 +62,10 @@
     font-weight: 500;
     color: $card-title-color;
     line-height: 18.15px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
   }
 
   &__description {
