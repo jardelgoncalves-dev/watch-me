@@ -1,3 +1,4 @@
+import { Container } from './components/Container';
 import { Header } from './components/Header'
 import { SelectButton, SelectButtonOptionProp } from './components/SelectButton'
 import './styles/global.scss';
@@ -10,7 +11,9 @@ export function App() {
   return (
     <div className="app">
       <Header />
-      <SelectButton options={options} />
+      <Container>
+        <SelectButton options={options} />
+      </Container>
     </div>
   )
 }
