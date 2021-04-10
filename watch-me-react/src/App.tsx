@@ -12,7 +12,10 @@ export function App() {
     <div className="app">
       <Header />
       <Container>
-        <SelectButton options={options} />
+        <div className="genre-select">
+          <h3>Genre</h3>
+          <SelectButton options={options} />
+        </div>
       </Container>
     </div>
   )
