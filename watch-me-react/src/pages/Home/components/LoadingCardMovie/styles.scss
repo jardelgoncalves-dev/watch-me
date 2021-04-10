@@ -1,0 +1,23 @@
+.loading-card-movie {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 210px;
+
+  &__img,
+  &__title,
+  &__description {
+    width: 100%;
+  }
+
+  &__img {
+    height: 300px;
+    border-radius: 8px;
+  }
+
+  &__title {
+    height: 40px;
+    margin: 8px 0;
+    border-radius: 8px;
+  }
+}
