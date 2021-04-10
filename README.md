@@ -13,3 +13,7 @@ Watch Me is a simple application that lists movies by genre. the application was
 
 - **API** - For running API Server, [click here](api-json-server/README.md)
 - **React App** - For running React App, [click here](watch-me-react/README.md)
+
+## Assets
+
+- UI - Figma ([click here](https://www.figma.com/file/un8ZJsPoatiOmFsZF6Xnvb/WatchMe?node-id=0%3A1))
