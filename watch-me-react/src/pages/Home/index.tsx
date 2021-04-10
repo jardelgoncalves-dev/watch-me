@@ -1,39 +1,71 @@
-import { CardMovie } from "../../components/CardMovie";
-import { Col } from "../../components/Col";
+import { useEffect, useState } from 'react';
+import { MovieProp } from '../../components/CardMovie';
 import { Container } from "../../components/Container";
 import { Row } from "../../components/Row";
-import { SelectButton, SelectButtonOptionProp } from "../../components/SelectButton";
+import { SelectGenres, SelectGenresOptionProp } from "../../components/SelectGenres";
+import { api } from '../../service/api';
 import { ListCardMovie } from "./components/ListCardMovie";
 import { LoadingCardMovie } from "./components/LoadingCardMovie";
-import { LoadingSelectButton } from "./components/LoadingSelectButton";
+import { LoadingSelectGenres } from "./components/LoadingSelectGenres";
 
 import './styles.scss';
 
 export function HomePage() {
-  const options: SelectButtonOptionProp[] = [
-    { label: 'Acao', value: 'acao'},
-    { label: 'Drama', value: 'drama'},
-    { label: 'Drama 2', value: 'drama 2'},
-    { label: 'Drama 3', value: 'drama 3'},
-  ]
+  const [genre, setGenre] = useState<SelectGenresOptionProp | null>(null)
+  const [genres, setGenres] = useState<SelectGenresOptionProp[]>([])
+  const [movies, setMovies] = useState<MovieProp[]>([])
+  const [loadings, setLoadings] = useState({
+    fetchMovies: false,
+    fetchGenres: false
+  })
 
-  const movies = [{
-    Title: "Underdog",
-    Runtime: "84 min",
-    Poster: "https://m.media-amazon.com/images/M/MV5BMTk5NjkyNzEwOV5BMl5BanBnXkFtZTcwODc5NDI1MQ@@._V1_SX300.jpg",
-    imdbRating: "4.7",
-  }]
+  useEffect(() => {
+    setLoadings(old => ({
+      ...old,
+      fetchGenres: true
+    }))
+    api.get('/genres')
+      .then(({ data }) => {
+        setGenres(data)
+        setGenre(data[0])
+      })
+      .finally(() => {
+        setLoadings(old => ({
+          ...old,
+          fetchGenres: false
+        }))
+      })
+  }, [])
+
+  useEffect(() => {
+    const genreId = genre?.id || genres[0]?.id
+    if(genreId) {
+      setLoadings(old => ({
+        ...old,
+        fetchMovies: true
+      }))
+      api.get(`/movies?Genre_id=${genreId}`)
+        .then(({ data }) => setMovies(data))
+        .finally(() => {
+          setLoadings(old => ({
+            ...old,
+            fetchMovies: false
+          }))
+        })
+    }
+
+  }, [genre])
   
   return (
     <Container>
       <div className="genre-select">
         <h3>Genre</h3>
-        {/* <SelectButton options={options} /> */}
-        <LoadingSelectButton loading />
+        <LoadingSelectGenres loading={loadings.fetchGenres} />
+        {!loadings.fetchGenres && <SelectGenres options={genres} onChange={setGenre} />}
       </div>
       <Row>
-        <LoadingCardMovie enabled quantity={5} />
-        <ListCardMovie movies={movies} />
+        <LoadingCardMovie loading={loadings.fetchMovies} quantity={5} />
+        {!loadings.fetchMovies && <ListCardMovie movies={movies} />}
       </Row>
     </Container>
   )
