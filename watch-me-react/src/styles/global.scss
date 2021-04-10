@@ -13,6 +13,14 @@ body {
   color: $text-color;
 }
 
+body::-webkit-scrollbar {
+  width: 4px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: $primary-color;
+}
+
 .loading {
   position: relative;
   overflow: hidden;
