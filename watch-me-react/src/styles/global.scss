@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import "colors";
 
 * {
   padding: 0;
@@ -8,8 +9,8 @@
 
 body {
   font-family: "Inter", sans-serif;
-  background-color: #191b29;
-  color: #e5e5e5;
+  background-color: $background-color;
+  color: $text-color;
 }
 
 .genre-select {

@@ -1,5 +1,7 @@
+@import "../../styles/colors";
+
 .nav {
-  border-bottom: 1px solid #23263a;
+  border-bottom: 1px solid $border-color;
   height: 80px;
   width: 100%;
   display: flex;

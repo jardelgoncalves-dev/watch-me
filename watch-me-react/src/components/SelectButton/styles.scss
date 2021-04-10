@@ -1,3 +1,5 @@
+@import "../../styles/colors";
+
 .select-button {
   display: flex;
   flex-direction: row;
@@ -12,9 +14,9 @@
     cursor: pointer;
     user-select: none;
     font-size: 18px;
-    color: #c0b7b7;
+    color: $text-color;
     line-height: 22px;
-    background-color: #23263a;
+    background-color: $button-color;
     border: none;
     border-radius: 8px;
     outline: none;
@@ -22,8 +24,8 @@
     transition: all 0.4s;
 
     &.--selected {
-      background-color: #f2c046;
-      color: #23263a;
+      background-color: $primary-color;
+      color: $button-color;
     }
 
     & + & {
