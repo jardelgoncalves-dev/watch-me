@@ -27,7 +27,7 @@ export function CardMovie({ movie }: CardMovieProp) {
           <span>{movie.imdbRating}</span>
         </div>
       </div>
-      <h3 className="card-movie__title">{movie.Title}</h3>
+      <h3 className="card-movie__title" title={movie.Title}>{movie.Title}</h3>
       <p className="card-movie__description">Duration {movie.Runtime}</p>
     </div>
   )
