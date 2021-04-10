@@ -113,11 +113,11 @@ body::-webkit-scrollbar-thumb {
   .genre-select {
     align-items: center;
     h3 {
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
   }
 
-  .select-button__select-item {
+  .select-genres__select-item {
     height: 48px;
     & + & {
       margin-left: 12px;
