@@ -13,11 +13,42 @@ body {
   color: $text-color;
 }
 
-.genre-select {
-  margin-top: 56px;
-  h3 {
-    font-weight: 900;
-    font-size: 22px;
+.loading {
+  position: relative;
+  overflow: hidden;
+  background-color: $button-color;
+}
+
+.loading::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: -150px;
+  top: 0;
+  height: 100%;
+  width: 350px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    $loading-color 50%,
+    transparent 100%
+  );
+  animation: load-animation 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes load-animation {
+  from {
+    left: -150px;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  .col {
+    flex: 25%;
+    max-width: 25%;
   }
 }
 
@@ -33,12 +64,21 @@ body {
   .nav {
     padding: 0 60px;
   }
+  .col {
+    flex: 33%;
+    max-width: 33%;
+  }
 }
 
 @media only screen and (max-width: 768px) {
   .container,
   .nav {
     padding: 0 40px;
+  }
+
+  .col {
+    flex: 50%;
+    max-width: 50%;
   }
 }
 
@@ -49,5 +89,30 @@ body {
   }
   .nav {
     justify-content: center;
+  }
+
+  .col {
+    flex: 100%;
+    max-width: 100%;
+  }
+
+  .card-movie,
+  .loading-card-movie {
+    width: 252px;
+    height: 360px;
+  }
+
+  .genre-select {
+    align-items: center;
+    h3 {
+      margin-bottom: 16px;
+    }
+  }
+
+  .select-button__select-item {
+    height: 48px;
+    & + & {
+      margin-left: 12px;
+    }
   }
 }
