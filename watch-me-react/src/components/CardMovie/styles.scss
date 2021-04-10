@@ -1,0 +1,94 @@
+@import "../../styles/colors";
+
+.card-movie {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 210px;
+  cursor: pointer;
+  position: relative;
+
+  &__poster,
+  &__title,
+  &__description {
+    width: 100%;
+  }
+
+  &__poster {
+    height: 300px;
+    margin-bottom: 6px;
+    position: relative;
+
+    &__img {
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+    }
+
+    &__play-icon svg,
+    &__imdb {
+      position: absolute;
+      opacity: 0;
+      transition: opacity 0.2s;
+      z-index: 1;
+    }
+
+    &__play-icon svg {
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+    }
+
+    &__imdb {
+      bottom: 10px;
+      right: 10px;
+      display: flex;
+      align-items: center;
+
+      span {
+        font-weight: 900;
+        color: $primary-color;
+        font-size: 12px;
+        line-height: 12.1px;
+        margin-left: 4px;
+      }
+    }
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 500;
+    color: $card-title-color;
+    line-height: 18.15px;
+  }
+
+  &__description {
+    font-size: 12px;
+    font-weight: 300;
+    margin-top: 6px;
+  }
+
+  &::after {
+    transition: background-color 0.2s;
+    content: "";
+    width: 100%;
+    height: 300px;
+    border-radius: 8px;
+    background-color: transparent;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  &:hover {
+    .card-movie__poster__play-icon svg,
+    .card-movie__poster__imdb {
+      opacity: 1;
+    }
+  }
+  &:hover::after {
+    background-color: $card-hover-bg;
+  }
+}
