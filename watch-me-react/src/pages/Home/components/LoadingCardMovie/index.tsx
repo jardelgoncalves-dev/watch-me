@@ -3,14 +3,14 @@ import './styles.scss';
 
 interface LoadingCardMovieProp {
   quantity: number;
-  enabled: boolean
+  loading: boolean
 }
 
-export function LoadingCardMovie({ quantity, enabled }: LoadingCardMovieProp) {
+export function LoadingCardMovie({ quantity, loading }: LoadingCardMovieProp) {
   return (
     <>
       {
-        enabled ? (
+        loading ? (
           Array.from({ length: quantity }, (_, i) => i)
             .map(index => (
               <Col key={index}>
